@@ -1,0 +1,106 @@
+/* docs: https://tailwindcss.com/docs/adding-custom-styles#adding-custom-utilities */
+
+/* custom utilities for spacing */
+@utility spacing-max-width {
+  @apply max-w-[600px] tablet:max-w-[1250px] laptop:max-w-[2000px];
+}
+
+@utility spacing-width {
+  @apply w-[360px] tablet:w-[744px] laptop:w-[1440px];
+}
+
+@utility spacing-min-width {
+  @apply min-w-[260px] tablet:min-w-[560px] laptop:min-w-[1100px];
+}
+
+@utility spacing-padding-x {
+  @apply px-[20px] tablet:px-[36px] laptop:px-[60px];
+}
+
+@utility spacing-padding-right {
+  @apply pr-[20px] tablet:pr-[36px] laptop:pr-[40px];
+}
+
+@utility spacing-padding-y {
+  @apply py-[48px] tablet:py-[56px] laptop:py-[56px];
+}
+
+@utility spacing-gap {
+  @apply gap-[34px] tablet:gap-[40px] laptop:gap-[40px];
+}
+
+@utility heading-secondary-button {
+  @apply text-[14px] tablet:text-[14px] laptop:text-[15px];
+}
+
+@utility big-uppercase {
+  @apply text-[18px] tablet:text-[20px] laptop:text-[22px];
+}
+
+@utility big-lowercase {
+  @apply text-[16px] tablet:text-[18px] laptop:text-[20px];
+}
+
+@utility secondary-button {
+  @apply text-[14px] tablet:text-[14px] laptop:text-[15px];
+}
+
+@utility heading-secondary {
+  @apply text-[14px] tablet:text-[14px] laptop:text-[15px];
+}
+
+@utility quote-text {
+  @apply text-[16px] tablet:text-[18px] laptop:text-[20px];
+}
+
+@utility inner-border-right {
+  @apply shadow-[inset_-1px_0_0_0_var(--secondary-stroke)];
+}
+
+@utility inner-border-top {
+  @apply shadow-[inset_0_1px_0_0_var(--primary-stroke)];
+}
+
+@utility inner-border-bottom {
+  @apply shadow-[inset_0_-1px_0_0_var(--primary-stroke)];
+}
+
+@utility inner-border-left {
+  @apply shadow-[inset_1px_0_0_0_var(--primary-stroke)];
+}
+
+@utility inner-border-all {
+  @apply shadow-[inset_0_0_0_1px_var(--primary-stroke)];
+}
+
+@utility inner-border-all-secondary {
+  @apply shadow-[inset_0_0_0_1px_var(--secondary-stroke)];
+}
+
+@utility inner-border-vertical-secondary {
+  @apply shadow-[inset_0_0_0_1px_var(--secondary-stroke)];
+}
+
+/* Responsive table wrapper */
+@utility table-responsive-wrapper {
+  @apply overflow-x-auto -mx-4 px-4 tablet:mx-0 tablet:px-0;
+
+  /* Custom scrollbar for tables */
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--surface-container-background);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--secondary-stroke);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-stroke);
+  }
+}

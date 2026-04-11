@@ -1,0 +1,97 @@
+/* ============================================
+   CLASES REUTILIZABLES PARA ALTERNAR TEMAS
+   ============================================
+   
+   Estas clases permiten alternar entre dark y light
+   según breakpoints sin usar JS.
+   
+   USO:
+   
+   1. Dark por defecto → Light en laptop+ (1232px+):
+      className="dark theme-responsive-laptop"
+   
+   2. Dark por defecto → Light en tablet+ (744px+):
+      className="dark theme-responsive-tablet"
+   
+   3. Light por defecto → Dark en laptop+ (1232px+):
+      className="light theme-responsive-laptop"
+   
+   4. Light por defecto → Dark en tablet+ (744px+):
+      className="light theme-responsive-tablet"
+    
+   EJEMPLO:
+   <form className="dark theme-responsive-laptop">
+     // Los hijos heredarán: dark en mobile/tablet, light en laptop+
+   </form>
+   
+  Si conoces una forma menos compleja para hacer esto sin usar js, hazlo :).
+
+   ============================================ */
+
+/* Clase: dark por defecto, light en laptop+ (1232px+) */
+@media (min-width: 1232px) {
+  .dark.action-slider-tablet {
+    --background: oklch(1 0 0);
+    --primary-foreground: oklch(1 0 0);
+    --secondary: oklch(0.9731 0 0);
+    --secondary-foreground: oklch(0.9731 0 0);
+    --terciary-foreground: oklch(0.928 0 0 / 80%);
+    --accent-solid: oklch(1 0 0);
+    --accent-foreground: oklch(1 0 0);
+    --surface-background: oklch(0 0 0);
+    --surface-container-background: oklch(0.2178 0 0);
+    --on-surface-background: oklch(0 0 0 / 20%);
+    --primary-stroke: oklch(1 0 0 / 23.92%);
+    --secondary-stroke: oklch(1 0 0 / 14.9%);
+    --background-primary-button: oklch(1 0 0);
+    --text-primary-button: oklch(0.2478 0 0 / 94.9%);
+    --icon-primary-button: oklch(0.4784 0 0);
+    --text-secondary-button: oklch(1 0 0);
+    --icon-secondary-button: oklch(0.928 0 0 / 80%);
+  }
+}
+
+/* Clase: dark por defecto, light en tablet+ (744px+) */
+@media (max-width: 744px) {
+  .dark.action-slider-tablet {
+    --background: oklch(0 0 0);
+    --primary-foreground: oklch(0.2178 0 0);
+    --secondary: oklch(0.2478 0 0 / 94.9%);
+    --secondary-foreground: oklch(0.2478 0 0 / 94.9%);
+    --terciary-foreground: oklch(0.4784 0 0);
+    --accent-solid: oklch(0.2178 0 0);
+    --accent-foreground: oklch(0 0 0);
+    --surface-background: oklch(1 0 0);
+    --surface-container-background: oklch(1 0 0);
+    --on-surface-background: oklch(0.928 0 0 / 80%);
+    --primary-stroke: oklch(0 0 0 / 20%);
+    --secondary-stroke: oklch(0.928 0 0 / 80%);
+    --background-primary-button: oklch(0.2178 0 0);
+    --text-primary-button: oklch(1 0 0);
+    --icon-primary-button: oklch(0.928 0 0 / 80%);
+    --text-secondary-button: oklch(0.2478 0 0 / 94.9%);
+    --icon-secondary-button: oklch(0.4784 0 0);
+  }
+}
+
+@media (max-width: 744px) {
+  .dark.trusted-and-reliable-content {
+    --background: oklch(0 0 0);
+    --primary-foreground: oklch(0.2178 0 0);
+    --secondary: oklch(0.2478 0 0 / 94.9%);
+    --secondary-foreground: oklch(0.2478 0 0 / 94.9%);
+    --terciary-foreground: oklch(0.4784 0 0);
+    --accent-solid: oklch(0.2178 0 0);
+    --accent-foreground: oklch(0 0 0);
+    --surface-background: oklch(1 0 0);
+    --surface-container-background: oklch(0.9731 0 0);
+    --on-surface-background: oklch(0.928 0 0 / 80%);
+    --primary-stroke: oklch(0 0 0 / 20%);
+    --secondary-stroke: oklch(0.928 0 0 / 80%);
+    --background-primary-button: oklch(0.2178 0 0);
+    --text-primary-button: oklch(1 0 0);
+    --icon-primary-button: oklch(0.928 0 0 / 80%);
+    --text-secondary-button: oklch(0.2478 0 0 / 94.9%);
+    --icon-secondary-button: oklch(0.4784 0 0);
+  }
+}

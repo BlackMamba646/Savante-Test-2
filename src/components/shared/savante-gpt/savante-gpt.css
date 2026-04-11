@@ -1,0 +1,577 @@
+/* ============================================
+   SAVANTE AI CONCIERGE — Premium Dark Glass UI
+   ============================================ */
+
+/* -- Floating Trigger Wrapper -- */
+.savante-gpt-trigger-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 98;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: savante-trigger-appear 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.savante-gpt-trigger-wrapper--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.9);
+}
+
+.savante-gpt-tooltip {
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: #fff;
+  font-family: var(--font-plus, sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  animation: savante-tooltip-pulse 2.5s infinite ease-in-out;
+}
+
+.savante-gpt-tooltip::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: rgba(15, 15, 15, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@keyframes savante-tooltip-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* -- Floating Trigger Button -- */
+.savante-gpt-trigger {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.savante-gpt-trigger:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.savante-gpt-trigger:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Luxury Shimmer Sweep Animation */
+.savante-gpt-trigger::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: skewX(-25deg);
+  animation: savante-shimmer 6s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.savante-gpt-trigger__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* -- Overlay Background -- */
+.savante-gpt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 24px;
+  animation: savante-overlay-in 0.4s ease-out;
+}
+
+/* -- Chat Panel Container -- */
+.savante-gpt-panel {
+  width: 440px;
+  height: min(720px, calc(100vh - 48px));
+  background: linear-gradient(145deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95));
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: savante-panel-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-plus, sans-serif);
+  color: #fff;
+}
+
+/* -- Header -- */
+.savante-gpt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(30, 30, 30, 0.4);
+  flex-shrink: 0;
+}
+
+.savante-gpt-header__info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.savante-gpt-header__avatar {
+  width: 70px;
+  height: 36px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.savante-gpt-header__title {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #fff;
+  margin: 0 0 2px 0;
+  font-family: var(--font-crimson, serif);
+}
+
+.savante-gpt-header__subtitle {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.savante-gpt-header__close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.savante-gpt-header__close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+/* -- Messages Area -- */
+.savante-gpt-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  scrollbar-width: none; /* Hide standard scrollbar */
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.savante-gpt-messages::-webkit-scrollbar {
+  display: none;
+}
+
+/* -- Welcome State -- */
+.savante-gpt-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 10px;
+  animation: savante-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: auto 0;
+}
+
+.savante-gpt-welcome__icon {
+  width: 120px;
+  height: 60px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.savante-gpt-welcome__title {
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 12px;
+  font-family: var(--font-crimson, serif);
+  letter-spacing: 0.5px;
+}
+
+.savante-gpt-welcome__text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 32px;
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+/* -- Suggestion Chips -- */
+.savante-gpt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.savante-gpt-chip {
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.savante-gpt-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* -- Messages -- */
+.savante-gpt-message {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  animation: savante-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.savante-gpt-message--user {
+  justify-content: flex-end;
+}
+
+.savante-gpt-message--assistant {
+  justify-content: flex-start;
+}
+
+.savante-gpt-message__avatar {
+  width: 54px;
+  height: 28px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.savante-gpt-message__bubble {
+  max-width: 82%;
+  padding: 16px 20px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.savante-gpt-message--user .savante-gpt-message__bubble {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px 20px 4px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.savante-gpt-message--assistant .savante-gpt-message__bubble {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 8px 0;
+}
+
+.savante-gpt-message__text {
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+}
+
+/* Markdown styling inside dark UI */
+.savante-gpt-message__markdown p {
+  margin: 0 0 12px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+}
+.savante-gpt-message__markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.savante-gpt-message__markdown strong {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.savante-gpt-message__markdown ul,
+.savante-gpt-message__markdown ol {
+  margin: 8px 0 16px;
+  padding-left: 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.savante-gpt-message__markdown li {
+  margin-bottom: 6px;
+}
+
+/* -- Typing Indicator -- */
+.savante-gpt-typing {
+  display: flex;
+  gap: 6px;
+  padding: 12px 0;
+  align-items: center;
+}
+
+.savante-gpt-typing__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  animation: savante-typing-pulse 1.4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+.savante-gpt-typing__dot:nth-child(1) { animation-delay: 0ms; }
+.savante-gpt-typing__dot:nth-child(2) { animation-delay: 160ms; }
+.savante-gpt-typing__dot:nth-child(3) { animation-delay: 320ms; }
+
+/* -- Input Area -- */
+.savante-gpt-input-area {
+  padding: 20px 24px;
+  background: rgba(15, 15, 15, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.savante-gpt-input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 12px 14px 12px 20px;
+  transition: all 0.3s ease;
+}
+
+.savante-gpt-input-wrapper:focus-within {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.savante-gpt-textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  resize: none;
+  min-height: 24px;
+  max-height: 120px;
+  padding: 4px 0;
+}
+
+.savante-gpt-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.savante-gpt-send {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.savante-gpt-send--active {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.savante-gpt-send--active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+}
+
+.savante-gpt-send:disabled {
+  cursor: not-allowed;
+}
+
+.savante-gpt-input-hint {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 12px 0 0;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes savante-trigger-appear {
+  from { opacity: 0; transform: translateY(40px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes savante-shimmer {
+  0% { left: -100%; }
+  30% { left: 200%; }
+  100% { left: 200%; }
+}
+
+@keyframes savante-overlay-in {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to { opacity: 1; backdrop-filter: blur(8px); }
+}
+
+@keyframes savante-panel-in {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes savante-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes savante-typing-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .savante-gpt-trigger-wrapper {
+    bottom: 16px;
+    right: 16px;
+  }
+  .savante-gpt-trigger {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  .savante-gpt-trigger__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .savante-gpt-overlay {
+    padding: 0;
+    align-items: flex-end;
+    /* Use dynamic viewport height so iOS/Android keyboards shrink the view properly */
+    height: 100dvh; 
+    top: auto;
+    bottom: 0;
+  }
+
+  .savante-gpt-panel {
+    width: 100%;
+    /* Use exactly the available screen space, accommodating the keyboard */
+    height: 100dvh; 
+    max-height: 100dvh; 
+    border-radius: 20px 20px 0 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    
+    /* Hardware acceleration to smooth out keyboard expansion lag */
+    transform: translateZ(0); 
+    will-change: transform, height;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .savante-gpt-messages {
+    /* Smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 24px;
+  }
+  
+  .savante-gpt-input-area {
+    /* Ensure the input area has some padding at the bottom for safety, 
+       but not too much so it looks bad when keyboard is up */
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+  }
+}

@@ -1,0 +1,259 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Variables, Layers and Utilities */
+@import "../styles/variables.css";
+@import "../styles/base.css";
+@import "../styles/components.css";
+@import "../styles/utilities.css";
+@import "../styles/animations.css";
+@import "../styles/variants.css";
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 200s linear infinite;
+}
+
+@keyframes slides {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.test {
+  border: 1px solid var(--color-accent-solid);
+}
+
+.logos {
+  overflow: hidden;
+  padding: 0px 0px;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* .logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  content: "";
+  width: 450px;
+  height: 100%;
+  z-index: 2;
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0),
+    rgb(255, 255, 255)
+  );
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgb(255, 255, 255)
+  );
+} */
+
+.logo_items {
+  animation: 35s slides infinite linear;
+  white-space: nowrap;
+}
+
+.logos:hover .logo_items {
+  animation-play-state: paused;
+}
+
+@media (max-width: 744px) {
+  @keyframes slides {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-300%);
+    }
+  }
+
+  @keyframes slides {
+    from {
+      transform: translateX(-300%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
+/* WhatsApp Button Pulse Animation */
+@keyframes whatsapp-pulse {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  25% {
+    transform: scale(0.3);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  75% {
+    transform: scale(0.9);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes whatsapp-pulse {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  25% {
+    -webkit-transform: scale(0.3);
+    opacity: 0.6;
+  }
+  50% {
+    -webkit-transform: scale(0.6);
+    opacity: 0.4;
+  }
+  75% {
+    -webkit-transform: scale(0.9);
+    opacity: 0.2;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes whatsapp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.whatsapp-button-container {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  z-index: 99;
+  opacity: 0;
+  animation: whatsapp-fade-in 0.5s ease-out 1.75s forwards;
+}
+
+@media (max-width: 744px) {
+  .whatsapp-button-container {
+    bottom: 84px;
+    right: 16px;
+  }
+}
+
+.whatsapp-button {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-color: #00a63b;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  z-index: 1;
+}
+
+.whatsapp-button:hover {
+  background-color: #00a63b;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.whatsapp-button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -15px;
+  right: -15px;
+  background-color: #00a63b;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+  opacity: 0.4;
+  -webkit-animation: whatsapp-pulse 3.5s ease-out infinite;
+  animation: whatsapp-pulse 3.5s ease-out infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.whatsapp-button::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -15px;
+  right: -15px;
+  background-color: #00a63b;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+  opacity: 0.3;
+  -webkit-animation: whatsapp-pulse 3.5s ease-out infinite 1.75s;
+  animation: whatsapp-pulse 3.5s ease-out infinite 1.75s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-stroke) transparent;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.agent-image {
+  position: relative;
+  mask-image: linear-gradient(to bottom, white 0%, white 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, white 0%, white 80%, transparent 100%);
+}
+
+/* Opción alternativa con pseudo-elemento para gradiente blanco */
+.agent-image-gradient {
+  position: relative;
+}

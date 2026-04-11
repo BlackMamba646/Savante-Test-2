@@ -1,0 +1,46 @@
+import React from "react";
+
+interface PhoneProps {
+  size?: number;
+}
+
+export const Flag = ({ size }: PhoneProps) => {
+  return (
+    <svg
+      width={size || 16}
+      height={size ? size * (17 / 16) : 17}
+      viewBox="0 0 16 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_10624_7931)">
+        <path
+          d="M8 16.502C12.4183 16.502 16 12.9202 16 8.50195C16 4.08367 12.4183 0.501953 8 0.501953C3.58172 0.501953 0 4.08367 0 8.50195C0 12.9202 3.58172 16.502 8 16.502Z"
+          fill="#F0F0F0"
+        />
+        <path
+          d="M4.52173 11.2842L5.21738 16.0041C6.08401 16.3256 7.02142 16.5016 7.99998 16.5016C11.4397 16.5016 14.372 14.3306 15.5024 11.2842H4.52173Z"
+          fill="black"
+        />
+        <path
+          d="M4.52173 5.71936L5.21738 0.999484C6.08401 0.677891 7.02142 0.501953 7.99998 0.501953C11.4397 0.501953 14.372 2.67295 15.5024 5.71936H4.52173Z"
+          fill="#6DA544"
+        />
+        <path
+          d="M0 8.50241C0 11.9421 2.17103 14.8745 5.21741 16.0048V1C2.17103 2.13034 0 5.06269 0 8.50241Z"
+          fill="#A2001D"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_10624_7931">
+          <rect
+            width="16"
+            height="16"
+            fill="white"
+            transform="translate(0 0.501953)"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
