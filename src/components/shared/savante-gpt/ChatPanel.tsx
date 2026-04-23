@@ -175,8 +175,8 @@ export const ChatPanel = ({ onClose }: ChatPanelProps) => {
                 Welcome to Savante AI Concierge
               </h3>
               <p className="savante-gpt-welcome__text">
-                Your personal real estate advisor powered by live market data.
-                Begin by introducing yourself or choosing a topic below.
+                I can help collect your requirements and connect you with our in-house expert.
+                Start by sharing your details or choosing an option below.
               </p>
               <div className="savante-gpt-chips">
                 {SUGGESTION_CHIPS.map((chip) => (
@@ -211,7 +211,7 @@ export const ChatPanel = ({ onClose }: ChatPanelProps) => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask about Dubai real estate..."
+              placeholder="Share your details to book a call..."
               rows={1}
               disabled={isLoading}
             />
